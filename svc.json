@@ -1,0 +1,47 @@
+{
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+        "annotations": {
+            "description": "Exposes and load balances the application pods",
+            "openshift.io/generated-by": "OpenShiftNewApp",
+            "service.alpha.openshift.io/dependencies": "[{\"name\": \"quotesdb\", \"kind\": \"Service\"}]"
+        },
+        "creationTimestamp": "2023-01-04T17:13:01Z",
+        "labels": {
+            "app": "quotesapi",
+            "template": "php-mysql-ephemeral"
+        },
+        "name": "quotesapi",
+        "namespace": "developer-build-template",
+        "resourceVersion": "243921",
+        "uid": "2956cd21-cef6-49d2-a5d6-e0eafc667547"
+    },
+    "spec": {
+        "clusterIP": "172.30.105.101",
+        "clusterIPs": [
+            "172.30.105.101"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+            "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+            {
+                "name": "web",
+                "port": 8080,
+                "protocol": "TCP",
+                "targetPort": 8080
+            }
+        ],
+        "selector": {
+            "app": "quotesapi"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+}

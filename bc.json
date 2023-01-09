@@ -1,0 +1,79 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "annotations": {
+            "description": "Defines how to build the application",
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        },
+        "creationTimestamp": "2023-01-04T17:13:01Z",
+        "generation": 2,
+        "labels": {
+            "app": "quotesapi",
+            "template": "php-mysql-ephemeral"
+        },
+        "name": "quotesapi",
+        "namespace": "developer-build-template",
+        "resourceVersion": "243939",
+        "uid": "bf7f82bf-c11b-4af9-918a-858a0817a58d"
+    },
+    "spec": {
+        "failedBuildsHistoryLimit": 5,
+        "nodeSelector": null,
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "quotesapi:latest"
+            }
+        },
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Serial",
+        "source": {
+            "contextDir": "quotes",
+            "git": {
+                "uri": "https://github.com/msrugies/DO288-apps"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "sourceStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "php:7.4-ubi8",
+                    "namespace": "openshift"
+                }
+            },
+            "type": "Source"
+        },
+        "successfulBuildsHistoryLimit": 5,
+        "triggers": [
+            {
+                "imageChange": {},
+                "type": "ImageChange"
+            },
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "github": {
+                    "secret": "FWmtMkwDxpoilpgyWGtajwad5AbhgBqxK4Owty8m"
+                },
+                "type": "GitHub"
+            }
+        ]
+    },
+    "status": {
+        "imageChangeTriggers": [
+            {
+                "from": {
+                    "name": "php:7.4-ubi8",
+                    "namespace": "openshift"
+                },
+                "lastTriggerTime": "2023-01-04T17:13:01Z",
+                "lastTriggeredImageID": "image-registry.openshift-image-registry.svc:5000/openshift/php@sha256:040356e7753a683199a12de051a773e1ba0eb7c3fd3e66ded086b8f9f5a58eaa"
+            }
+        ],
+        "lastVersion": 1
+    }
+}

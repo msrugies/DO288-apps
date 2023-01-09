@@ -1,0 +1,45 @@
+{
+    "apiVersion": "route.openshift.io/v1",
+    "kind": "Route",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp",
+            "template.openshift.io/expose-uri": "http://{.spec.host}{.spec.path}"
+        },
+        "creationTimestamp": "2023-01-04T17:13:01Z",
+        "labels": {
+            "app": "quotesapi",
+            "template": "php-mysql-ephemeral"
+        },
+        "name": "quotesapi",
+        "namespace": "developer-build-template",
+        "resourceVersion": "243926",
+        "uid": "fdd7916f-e69c-4481-82e9-fb43fd5f5af4"
+    },
+    "spec": {
+        "host": "quote-developer.apps.ocp4.example.com",
+        "to": {
+            "kind": "Service",
+            "name": "quotesapi",
+            "weight": 100
+        },
+        "wildcardPolicy": "None"
+    },
+    "status": {
+        "ingress": [
+            {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2023-01-04T17:13:01Z",
+                        "status": "True",
+                        "type": "Admitted"
+                    }
+                ],
+                "host": "quote-developer.apps.ocp4.example.com",
+                "routerCanonicalHostname": "router-default.apps.ocp4.example.com",
+                "routerName": "default",
+                "wildcardPolicy": "None"
+            }
+        ]
+    }
+}

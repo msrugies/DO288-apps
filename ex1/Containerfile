@@ -1,0 +1,3 @@
+FROM httpd:2.4
+USER 1001
+CMD ["httpd -D FOREGROUND"]
